@@ -8,90 +8,180 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f5f7fa;color:#14243b}
-header{background:#10233f;color:white;padding:20px 6%;display:flex;justify-content:space-between;align-items:center}
+header{background:#10233f;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .logo{font-size:25px;font-weight:800;letter-spacing:1px}
-.cart{border:1px solid #fff;padding:9px 14px;border-radius:7px}
-.hero{background:#10233f;color:white;padding:65px 7%;text-align:center}
-.hero h1{font-size:clamp(34px,7vw,58px);margin-bottom:15px}
-.hero p{color:#d5deeb;line-height:1.7}
-.hero a{display:inline-block;background:white;color:#10233f;text-decoration:none;padding:14px 25px;margin-top:25px;border-radius:6px;font-weight:bold}
-main{padding:45px 6%}
-.section-title{text-align:center;margin-bottom:30px}
-.section-title h2{font-size:29px;margin-bottom:8px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px}
-.product{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 15px #14243b12}
-.product-art{height:190px;background:#e5eaf1;display:grid;place-items:center;color:#10233f;font-size:55px;font-weight:bold}
-.product-info{padding:18px}
-.product-info h3{margin-bottom:9px}
-.product-info p{color:#637087;margin-bottom:15px;font-size:14px}
-.product button{width:100%;padding:12px;background:#10233f;color:white;border:0;border-radius:6px;font-weight:bold}
-.product button:active{opacity:.8}
-.notice{text-align:center;margin-top:25px;color:#64748b;font-size:13px}
-footer{background:#10233f;color:white;text-align:center;padding:30px 15px;line-height:2}
+.cart-btn{background:transparent;border:1px solid white;color:white;padding:10px 14px;border-radius:7px;font-weight:bold}
+.hero{background:#10233f;color:white;text-align:center;padding:65px 7%}
+.hero h1{font-size:clamp(32px,7vw,54px);margin-bottom:14px}
+.hero p{color:#d5deeb;line-height:1.7;max-width:550px;margin:auto}
+.hero strong{display:block;margin-top:18px;letter-spacing:2px;color:#fff}
+.shop{padding:35px 6%;max-width:1200px;margin:auto}
+.shop h2{text-align:center;font-size:27px;margin-bottom:10px}
+.intro{text-align:center;color:#68768a;margin-bottom:25px;line-height:1.5}
+.search{width:100%;padding:14px;border:1px solid #ccd4df;border-radius:8px;font-size:16px;margin-bottom:16px}
+.filters{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+.filters button{border:1px solid #10233f;background:white;color:#10233f;padding:10px 14px;border-radius:20px;font-weight:bold}
+.filters button.active,.filters button:hover{background:#10233f;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.product{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px #10233f12}
+.product img{width:100%;height:220px;object-fit:cover;background:#e9edf2}
+.product-info{padding:16px}
+.tag{font-size:11px;color:#52647b;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.product h3{font-size:18px;margin:8px 0}
+.product p{font-size:13px;color:#68768a;line-height:1.5;min-height:38px}
+.price{font-weight:bold;margin:12px 0;color:#10233f}
+.sample{font-size:11px;color:#8a5b19;background:#fff4df;padding:6px 8px;border-radius:5px;display:inline-block;margin-bottom:12px}
+.add{display:block;width:100%;background:#10233f;color:white;border:0;padding:12px;border-radius:7px;font-weight:bold}
+.add:active{opacity:.8}
+.empty{text-align:center;color:#68768a;padding:30px;grid-column:1/-1}
+.note{background:#eaf0f7;padding:18px;border-radius:9px;margin-top:28px;text-align:center;color:#46566c;line-height:1.6;font-size:13px}
+footer{background:#10233f;color:white;text-align:center;padding:28px 15px;margin-top:35px}
+footer p{color:#d5deeb;font-size:13px;margin-top:8px}
+.cart-panel{display:none;background:white;padding:20px 6%;border-bottom:1px solid #dce2ea}
+.cart-panel.open{display:block}
+.cart-panel h3{margin-bottom:12px}
+.cart-line{padding:9px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.cart-actions{display:flex;gap:10px;margin-top:14px}
+.cart-actions button{padding:10px 14px;border:0;border-radius:6px;background:#10233f;color:white}
+@media(max-width:500px){header{padding:15px 4%}.logo{font-size:21px}.shop{padding:28px 4%}.product img{height:230px}}
 </style>
 </head>
 <body>
+
 <header>
-<div class="logo">AURAFLEX.</div>
-<div class="cart">Cart: <span id="count">0</span></div>
+  <div class="logo">AURAFLEX.</div>
+  <button class="cart-btn" onclick="toggleCart()">MY CART (<span id="cartCount">0</span>)</button>
 </header>
 
 <section class="hero">
-<h1>STYLE YOUR IDENTITY.</h1>
-<p>Discover your style. Express your individuality.<br>Welcome to AuraFlex.</p>
-<a href="#shop">EXPLORE THE STORE</a>
+  <h1>STYLE YOUR IDENTITY.</h1>
+  <p>Discover fashion, footwear and accessories that express who you are. Find your look. Own your style.</p>
+  <strong>FASHION • FOOTWEAR • ACCESSORIES</strong>
 </section>
 
-<main id="shop">
-<div class="section-title">
-<h2>Explore AuraFlex</h2>
-<p>Find your next favourite.</p>
-</div>
+<section class="cart-panel" id="cartPanel">
+  <h3>Your shopping cart</h3>
+  <div id="cartItems">Your cart is empty.</div>
+  <div class="cart-actions">
+    <button onclick="clearCart()">Clear cart</button>
+    <button onclick="toggleCart()">Continue shopping</button>
+  </div>
+  <p style="font-size:12px;color:#68768a;margin-top:12px">Demo cart only. Online payment and order submission are not active yet.</p>
+</section>
 
-<div class="products">
-<div class="product">
-<div class="product-art">AF</div>
-<div class="product-info">
-<h3>Everyday Collection</h3>
-<p>Everyday essentials. Price on request.</p>
-<button onclick="addToCart('Everyday Collection')">Add to cart</button>
-</div>
-</div>
+<main class="shop">
+  <h2>Explore AuraFlex</h2>
+  <p class="intro">A fresh collection of styles is on the way.</p>
 
-<div class="product">
-<div class="product-art">AF</div>
-<div class="product-info">
-<h3>Streetwear Collection</h3>
-<p>Stand out in your own style. Price on request.</p>
-<button onclick="addToCart('Streetwear Collection')">Add to cart</button>
-</div>
-</div>
+  <input class="search" id="search" type="search" placeholder="Search products..." oninput="renderProducts()">
 
-<div class="product">
-<div class="product-art">AF</div>
-<div class="product-info">
-<h3>Accessories</h3>
-<p>Complete your look. Price on request.</p>
-<button onclick="addToCart('Accessories')">Add to cart</button>
-</div>
-</div>
-</div>
-<p class="notice">Product images, descriptions and prices will be added as the store develops.</p>
+  <div class="filters">
+    <button class="active" data-category="All" onclick="setCategory('All',this)">All</button>
+    <button data-category="Fashion" onclick="setCategory('Fashion',this)">Fashion</button>
+    <button data-category="Shoes" onclick="setCategory('Shoes',this)">Shoes & Sneakers</button>
+    <button data-category="Accessories" onclick="setCategory('Accessories',this)">Watches & Accessories</button>
+  </div>
+
+  <div class="grid" id="productGrid"></div>
+
+  <div class="note">
+    <strong>You're viewing our sample collection.</strong><br>
+    These photographs are for design preview only. Actual products, availability and UGX prices will be added as the AuraFlex catalogue is confirmed.
+  </div>
 </main>
 
 <footer>
-<strong>AURAFLEX.</strong>
-<p>Modern style. Your identity.</p>
-<p>© 2026 AuraFlex. All rights reserved.</p>
+  <div class="logo">AURAFLEX.</div>
+  <p>Style your identity. Own your look.</p>
+  <p>© 2026 AuraFlex. All rights reserved.</p>
 </footer>
 
 <script>
-let count=0;
-function addToCart(item){
-count++;
-document.getElementById('count').textContent=count;
-alert(item+' added to your cart!');
+const products = [
+  {id:1,name:"Everyday Streetwear",category:"Fashion",description:"A modern casual look for everyday style.",image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=700"},
+  {id:2,name:"Classic Fashion Fit",category:"Fashion",description:"A clean, versatile outfit inspiration.",image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700"},
+  {id:3,name:"Statement Sneakers",category:"Shoes",description:"A bold footwear look for your collection.",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700"},
+  {id:4,name:"Urban Sneakers",category:"Shoes",description:"Street-inspired footwear style.",image:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=700"},
+  {id:5,name:"Classic Wristwatch",category:"Accessories",description:"A timeless accessory style.",image:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=700"},
+  {id:6,name:"Modern Sunglasses",category:"Accessories",description:"Complete your look with a bold finish.",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700"}
+];
+
+let selectedCategory = "All";
+let cart = [];
+
+function renderProducts(){
+  const search = document.getElementById("search").value.toLowerCase();
+  const filtered = products.filter(p =>
+    (selectedCategory === "All" || p.category === selectedCategory) &&
+    (p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search))
+  );
+
+  const grid = document.getElementById("productGrid");
+  if(!filtered.length){
+    grid.innerHTML = '<div class="empty">No matching sample products found.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => `
+    <article class="product">
+      <img src="${p.image}" alt="${p.name}" loading="lazy">
+      <div class="product-info">
+        <span class="tag">${p.category}</span>
+        <h3>${p.name}</h3>
+        <p>${p.description}</p>
+        <div class="price">Price coming soon</div>
+        <span class="sample">SAMPLE DISPLAY</span>
+        <button class="add" onclick="addToCart(${p.id})">Add to demo cart</button>
+      </div>
+    </article>
+  `).join("");
 }
+
+function setCategory(category,button){
+  selectedCategory = category;
+  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  renderProducts();
+}
+
+function addToCart(id){
+  const product = products.find(p=>p.id===id);
+  cart.push(product);
+  document.getElementById("cartCount").textContent = cart.length;
+  renderCart();
+}
+
+function renderCart(){
+  const area = document.getElementById("cartItems");
+  if(!cart.length){
+    area.textContent = "Your cart is empty.";
+    return;
+  }
+  area.innerHTML = cart.map((p,i)=>`
+    <div class="cart-line">
+      <span>${p.name}</span>
+      <button onclick="removeFromCart(${i})">Remove</button>
+    </div>
+  `).join("");
+}
+
+function removeFromCart(index){
+  cart.splice(index,1);
+  document.getElementById("cartCount").textContent = cart.length;
+  renderCart();
+}
+
+function clearCart(){
+  cart = [];
+  document.getElementById("cartCount").textContent = 0;
+  renderCart();
+}
+
+function toggleCart(){
+  document.getElementById("cartPanel").classList.toggle("open");
+}
+
+renderProducts();
 </script>
 </body>
 </html>
