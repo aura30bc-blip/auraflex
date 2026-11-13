@@ -3,185 +3,247 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AuraFlex | Style Your Identity</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f5f7fa;color:#14243b}
-header{background:#10233f;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.logo{font-size:25px;font-weight:800;letter-spacing:1px}
-.cart-btn{background:transparent;border:1px solid white;color:white;padding:10px 14px;border-radius:7px;font-weight:bold}
-.hero{background:#10233f;color:white;text-align:center;padding:65px 7%}
-.hero h1{font-size:clamp(32px,7vw,54px);margin-bottom:14px}
-.hero p{color:#d5deeb;line-height:1.7;max-width:550px;margin:auto}
-.hero strong{display:block;margin-top:18px;letter-spacing:2px;color:#fff}
-.shop{padding:35px 6%;max-width:1200px;margin:auto}
-.shop h2{text-align:center;font-size:27px;margin-bottom:10px}
-.intro{text-align:center;color:#68768a;margin-bottom:25px;line-height:1.5}
+header{background:#10233f;color:white;padding:17px 5%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:800;letter-spacing:1px}
+button{cursor:pointer}
+.cart-btn,.primary{background:#10233f;color:white;border:0;border-radius:7px;padding:12px 16px;font-weight:bold}
+.hero{background:#10233f;color:white;text-align:center;padding:60px 6%}
+.hero h1{font-size:clamp(32px,7vw,52px);margin-bottom:14px}
+.hero p{color:#d5deeb;line-height:1.7}
+.hero strong{display:block;margin-top:18px;letter-spacing:2px}
+.shop{max-width:1150px;margin:auto;padding:35px 5%}
+.shop h2{text-align:center;margin-bottom:10px}
+.intro{text-align:center;color:#68768a;margin-bottom:24px}
 .search{width:100%;padding:14px;border:1px solid #ccd4df;border-radius:8px;font-size:16px;margin-bottom:16px}
-.filters{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
-.filters button{border:1px solid #10233f;background:white;color:#10233f;padding:10px 14px;border-radius:20px;font-weight:bold}
-.filters button.active,.filters button:hover{background:#10233f;color:white}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:25px}
+.filters button{padding:10px 13px;border:1px solid #10233f;border-radius:20px;background:white;color:#10233f}
+.filters button.active{background:#10233f;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .product{background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px #10233f12}
 .product img{width:100%;height:220px;object-fit:cover;background:#e9edf2}
-.product-info{padding:16px}
-.tag{font-size:11px;color:#52647b;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
-.product h3{font-size:18px;margin:8px 0}
+.info{padding:15px}
+.tag{font-size:11px;text-transform:uppercase;color:#68768a;font-weight:bold}
+.product h3{margin:8px 0}
 .product p{font-size:13px;color:#68768a;line-height:1.5;min-height:38px}
-.price{font-weight:bold;margin:12px 0;color:#10233f}
-.sample{font-size:11px;color:#8a5b19;background:#fff4df;padding:6px 8px;border-radius:5px;display:inline-block;margin-bottom:12px}
-.add{display:block;width:100%;background:#10233f;color:white;border:0;padding:12px;border-radius:7px;font-weight:bold}
-.add:active{opacity:.8}
-.empty{text-align:center;color:#68768a;padding:30px;grid-column:1/-1}
-.note{background:#eaf0f7;padding:18px;border-radius:9px;margin-top:28px;text-align:center;color:#46566c;line-height:1.6;font-size:13px}
-footer{background:#10233f;color:white;text-align:center;padding:28px 15px;margin-top:35px}
-footer p{color:#d5deeb;font-size:13px;margin-top:8px}
-.cart-panel{display:none;background:white;padding:20px 6%;border-bottom:1px solid #dce2ea}
-.cart-panel.open{display:block}
-.cart-panel h3{margin-bottom:12px}
-.cart-line{padding:9px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:10px;font-size:14px}
-.cart-actions{display:flex;gap:10px;margin-top:14px}
-.cart-actions button{padding:10px 14px;border:0;border-radius:6px;background:#10233f;color:white}
-@media(max-width:500px){header{padding:15px 4%}.logo{font-size:21px}.shop{padding:28px 4%}.product img{height:230px}}
+.price{font-weight:bold;margin:12px 0}
+.sample{font-size:11px;background:#fff2d9;color:#86591b;padding:6px;border-radius:5px;display:inline-block;margin-bottom:12px}
+.add{width:100%;padding:12px;background:#10233f;color:white;border:0;border-radius:7px;font-weight:bold}
+.panel{display:none;background:white;padding:24px 5%;border-bottom:1px solid #ddd}
+.panel.open{display:block}
+.panel-inner{max-width:850px;margin:auto}
+.panel h2{margin-bottom:16px}
+.cart-line{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #e5e8ed;padding:14px 0}
+.cart-name{font-weight:bold;font-size:14px}
+.quantity{display:flex;align-items:center;gap:9px;margin-top:8px}
+.quantity button{padding:5px 10px;background:#eaf0f7;border:0;border-radius:4px}
+.remove{background:none;border:0;color:#a33;padding:8px}
+.total{font-size:18px;font-weight:bold;text-align:right;margin:20px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.secondary{background:#eaf0f7;color:#10233f;border:0;border-radius:7px;padding:12px 16px;font-weight:bold}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{margin-bottom:13px}
+.field.full{grid-column:1/-1}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid #ccd4df;border-radius:7px;font-size:15px;font-family:inherit}
+.field textarea{min-height:85px;resize:vertical}
+.notice{background:#eaf0f7;padding:15px;border-radius:8px;color:#46566c;font-size:13px;line-height:1.6;margin:18px 0}
+.status{padding:14px;background:#eaf5eb;border-radius:8px;color:#285d35;margin-top:15px;display:none;line-height:1.5}
+.empty{text-align:center;padding:25px;color:#68768a}
+footer{background:#10233f;color:white;text-align:center;padding:28px 12px;margin-top:35px}
+footer p{font-size:13px;color:#d5deeb;margin-top:8px}
+@media(max-width:550px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.shop{padding:28px 4%}.product img{height:230px}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">AURAFLEX.</div>
-  <button class="cart-btn" onclick="toggleCart()">MY CART (<span id="cartCount">0</span>)</button>
+ <div class="logo">AURAFLEX.</div>
+ <button class="cart-btn" onclick="togglePanel('cartPanel')">
+ MY CART (<span id="cartCount">0</span>)
+ </button>
 </header>
 
 <section class="hero">
-  <h1>STYLE YOUR IDENTITY.</h1>
-  <p>Discover fashion, footwear and accessories that express who you are. Find your look. Own your style.</p>
-  <strong>FASHION • FOOTWEAR • ACCESSORIES</strong>
+ <h1>STYLE YOUR IDENTITY.</h1>
+ <p>Discover fashion, footwear and accessories that express who you are.</p>
+ <strong>FASHION • FOOTWEAR • ACCESSORIES</strong>
 </section>
 
-<section class="cart-panel" id="cartPanel">
-  <h3>Your shopping cart</h3>
-  <div id="cartItems">Your cart is empty.</div>
-  <div class="cart-actions">
-    <button onclick="clearCart()">Clear cart</button>
-    <button onclick="toggleCart()">Continue shopping</button>
+<section class="panel" id="cartPanel">
+ <div class="panel-inner">
+  <h2>Your Shopping Cart</h2>
+  <div id="cartItems"></div>
+  <div class="total" id="cartTotal">Subtotal: UGX 0</div>
+  <div class="actions">
+   <button class="primary" onclick="openCheckout()">Proceed to checkout</button>
+   <button class="secondary" onclick="togglePanel('cartPanel')">Continue shopping</button>
   </div>
-  <p style="font-size:12px;color:#68768a;margin-top:12px">Demo cart only. Online payment and order submission are not active yet.</p>
+  <p class="notice">Sample catalogue prices are not available yet. The subtotal will remain UGX 0 until real products and prices are added.</p>
+ </div>
+</section>
+
+<section class="panel" id="checkoutPanel">
+ <div class="panel-inner">
+  <h2>Guest Checkout</h2>
+  <p class="intro">No account required. Enter your delivery details.</p>
+  <div id="checkoutSummary"></div>
+  <form id="checkoutForm">
+   <div class="form-grid">
+    <div class="field">
+     <label for="customerName">Full name</label>
+     <input id="customerName" required placeholder="Your full name">
+    </div>
+    <div class="field">
+     <label for="customerPhone">Phone number</label>
+     <input id="customerPhone" type="tel" required placeholder="+256...">
+    </div>
+    <div class="field full">
+     <label for="customerAddress">Delivery address</label>
+     <textarea id="customerAddress" required placeholder="District, town, street or location"></textarea>
+    </div>
+    <div class="field full">
+     <label for="customerNote">Additional instructions (optional)</label>
+     <textarea id="customerNote" placeholder="Any delivery instructions?"></textarea>
+    </div>
+   </div>
+   <div class="notice">
+    This is currently a checkout preview. No order will be sent or payment collected yet. We'll connect the real order system after testing.
+   </div>
+   <div class="actions">
+    <button class="primary" type="submit">Review my order</button>
+    <button class="secondary" type="button" onclick="togglePanel('checkoutPanel')">Back</button>
+   </div>
+  </form>
+  <div class="status" id="checkoutStatus"></div>
+ </div>
 </section>
 
 <main class="shop">
-  <h2>Explore AuraFlex</h2>
-  <p class="intro">A fresh collection of styles is on the way.</p>
+ <h2>Explore AuraFlex</h2>
+ <p class="intro">Find your look. Own your style.</p>
+ <input class="search" id="search" placeholder="Search products..." oninput="renderProducts()">
 
-  <input class="search" id="search" type="search" placeholder="Search products..." oninput="renderProducts()">
+ <div class="filters">
+  <button class="active" onclick="setCategory('All',this)">All</button>
+  <button onclick="setCategory('Fashion',this)">Fashion</button>
+  <button onclick="setCategory('Shoes',this)">Shoes & Sneakers</button>
+  <button onclick="setCategory('Accessories',this)">Watches & Accessories</button>
+ </div>
 
-  <div class="filters">
-    <button class="active" data-category="All" onclick="setCategory('All',this)">All</button>
-    <button data-category="Fashion" onclick="setCategory('Fashion',this)">Fashion</button>
-    <button data-category="Shoes" onclick="setCategory('Shoes',this)">Shoes & Sneakers</button>
-    <button data-category="Accessories" onclick="setCategory('Accessories',this)">Watches & Accessories</button>
-  </div>
-
-  <div class="grid" id="productGrid"></div>
-
-  <div class="note">
-    <strong>You're viewing our sample collection.</strong><br>
-    These photographs are for design preview only. Actual products, availability and UGX prices will be added as the AuraFlex catalogue is confirmed.
-  </div>
+ <div class="grid" id="productGrid"></div>
+ <div class="notice">
+  <strong>Sample collection:</strong> Photographs are for design preview only. Actual products, availability and UGX prices will be added when confirmed.
+ </div>
 </main>
 
 <footer>
-  <div class="logo">AURAFLEX.</div>
-  <p>Style your identity. Own your look.</p>
-  <p>© 2026 AuraFlex. All rights reserved.</p>
+ <div class="logo">AURAFLEX.</div>
+ <p>Style your identity. Own your look.</p>
+ <p>© 2026 AuraFlex. All rights reserved.</p>
 </footer>
 
 <script>
-const products = [
-  {id:1,name:"Everyday Streetwear",category:"Fashion",description:"A modern casual look for everyday style.",image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=700"},
-  {id:2,name:"Classic Fashion Fit",category:"Fashion",description:"A clean, versatile outfit inspiration.",image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700"},
-  {id:3,name:"Statement Sneakers",category:"Shoes",description:"A bold footwear look for your collection.",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700"},
-  {id:4,name:"Urban Sneakers",category:"Shoes",description:"Street-inspired footwear style.",image:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=700"},
-  {id:5,name:"Classic Wristwatch",category:"Accessories",description:"A timeless accessory style.",image:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=700"},
-  {id:6,name:"Modern Sunglasses",category:"Accessories",description:"Complete your look with a bold finish.",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700"}
+const products=[
+{id:1,name:"Everyday Streetwear",category:"Fashion",description:"A modern casual look for everyday style.",image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=700"},
+{id:2,name:"Classic Fashion Fit",category:"Fashion",description:"A clean and versatile outfit inspiration.",image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700"},
+{id:3,name:"Statement Sneakers",category:"Shoes",description:"A bold footwear look for your collection.",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700"},
+{id:4,name:"Urban Sneakers",category:"Shoes",description:"Street-inspired footwear style.",image:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=700"},
+{id:5,name:"Classic Wristwatch",category:"Accessories",description:"A timeless accessory style.",image:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=700"},
+{id:6,name:"Modern Sunglasses",category:"Accessories",description:"Complete your look with a bold finish.",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700"}
 ];
 
-let selectedCategory = "All";
-let cart = [];
+let category="All";
+let cart={};
 
 function renderProducts(){
-  const search = document.getElementById("search").value.toLowerCase();
-  const filtered = products.filter(p =>
-    (selectedCategory === "All" || p.category === selectedCategory) &&
-    (p.name.toLowerCase().includes(search) || p.description.toLowerCase().includes(search))
-  );
-
-  const grid = document.getElementById("productGrid");
-  if(!filtered.length){
-    grid.innerHTML = '<div class="empty">No matching sample products found.</div>';
-    return;
-  }
-
-  grid.innerHTML = filtered.map(p => `
-    <article class="product">
-      <img src="${p.image}" alt="${p.name}" loading="lazy">
-      <div class="product-info">
-        <span class="tag">${p.category}</span>
-        <h3>${p.name}</h3>
-        <p>${p.description}</p>
-        <div class="price">Price coming soon</div>
-        <span class="sample">SAMPLE DISPLAY</span>
-        <button class="add" onclick="addToCart(${p.id})">Add to demo cart</button>
-      </div>
-    </article>
-  `).join("");
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=products.filter(p=>(category==="All"||p.category===category)&&(p.name.toLowerCase().includes(q)||p.description.toLowerCase().includes(q)));
+ document.getElementById("productGrid").innerHTML=list.length?list.map(p=>`
+ <article class="product">
+ <img src="${p.image}" alt="${p.name}" loading="lazy">
+ <div class="info">
+ <span class="tag">${p.category}</span>
+ <h3>${p.name}</h3><p>${p.description}</p>
+ <div class="price">Price coming soon</div>
+ <span class="sample">SAMPLE DISPLAY</span>
+ <button class="add" onclick="addToCart(${p.id})">Add to demo cart</button>
+ </div></article>`).join(""):'<div class="empty">No matching products found.</div>';
 }
 
-function setCategory(category,button){
-  selectedCategory = category;
-  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-  renderProducts();
+function setCategory(value,button){
+ category=value;
+ document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ renderProducts();
 }
 
 function addToCart(id){
-  const product = products.find(p=>p.id===id);
-  cart.push(product);
-  document.getElementById("cartCount").textContent = cart.length;
-  renderCart();
+ cart[id]=(cart[id]||0)+1;
+ renderCart();
+ document.getElementById("cartCount").textContent=Object.values(cart).reduce((a,b)=>a+b,0);
+}
+
+function changeQty(id,change){
+ cart[id]+=change;
+ if(cart[id]<=0)delete cart[id];
+ renderCart();
+ document.getElementById("cartCount").textContent=Object.values(cart).reduce((a,b)=>a+b,0);
+}
+
+function removeItem(id){
+ delete cart[id];
+ renderCart();
+ document.getElementById("cartCount").textContent=Object.values(cart).reduce((a,b)=>a+b,0);
 }
 
 function renderCart(){
-  const area = document.getElementById("cartItems");
-  if(!cart.length){
-    area.textContent = "Your cart is empty.";
-    return;
-  }
-  area.innerHTML = cart.map((p,i)=>`
-    <div class="cart-line">
-      <span>${p.name}</span>
-      <button onclick="removeFromCart(${i})">Remove</button>
-    </div>
-  `).join("");
+ const entries=Object.entries(cart);
+ const area=document.getElementById("cartItems");
+ if(!entries.length){
+ area.innerHTML='<div class="empty">Your cart is empty. Explore our collection!</div>';
+ }else{
+ area.innerHTML=entries.map(([id,qty])=>{
+ const p=products.find(x=>x.id==id);
+ return `<div class="cart-line"><div><div class="cart-name">${p.name}</div><div class="quantity"><button onclick="changeQty(${id},-1)">−</button><span>${qty}</span><button onclick="changeQty(${id},1)">+</button></div></div><button class="remove" onclick="removeItem(${id})">Remove</button></div>`;
+ }).join("");
+ }
+ document.getElementById("cartTotal").textContent="Subtotal: UGX 0";
 }
 
-function removeFromCart(index){
-  cart.splice(index,1);
-  document.getElementById("cartCount").textContent = cart.length;
-  renderCart();
+function togglePanel(id){
+ document.getElementById(id).classList.toggle("open");
 }
 
-function clearCart(){
-  cart = [];
-  document.getElementById("cartCount").textContent = 0;
-  renderCart();
+function openCheckout(){
+ if(!Object.keys(cart).length){
+ alert("Your cart is empty. Add a sample product first.");
+ return;
+ }
+ document.getElementById("checkoutSummary").innerHTML=
+ '<div class="notice"><strong>Order preview</strong><br>'+
+ Object.entries(cart).map(([id,qty])=>products.find(p=>p.id==id).name+" × "+qty).join("<br>")+
+ '<br><br>Prices are not yet configured.</div>';
+ document.getElementById("cartPanel").classList.remove("open");
+ document.getElementById("checkoutPanel").classList.add("open");
+ document.getElementById("checkoutStatus").style.display="none";
 }
 
-function toggleCart(){
-  document.getElementById("cartPanel").classList.toggle("open");
-}
-
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+ const address=document.getElementById("customerAddress").value.trim();
+ const status=document.getElementById("checkoutStatus");
+ status.innerHTML="<strong>Details captured for this preview, "+name.replace(/[&<>"']/g,"")+"!</strong><br>Your phone number and delivery address have been entered. This is not a submitted order. Live ordering will be connected in a later development step.";
+ status.style.display="block";
+});
 renderProducts();
+renderCart();
 </script>
 </body>
 </html>
